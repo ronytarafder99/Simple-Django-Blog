@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-k#nzxh5i$+8x7c$l3u=7jfarsk)_*s44ky$+3&jazd2wu=*v@2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['simple-djblog.herokuapp.com','127.0.0.1']
 
@@ -123,7 +123,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
