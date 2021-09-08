@@ -5,6 +5,8 @@ from django.views.generic import TemplateView, ListView
 from django.db.models import Q
 
 # Create your views here.
+
+
 def home(request):
     cats = Category.objects.all()
 
@@ -18,21 +20,24 @@ def home(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
-    data ={
-        'posts':posts,
-        'cats':cats
+    data = {
+        'posts': posts,
+        'cats': cats
     }
     return render(request, 'home.html', data)
 
-def post(request,url):
-    post = Post.objects.get(url=url)
-    cats = Category.objects.all()
-    return render(request, 'posts.html', {'post':post, 'cats':cats})
 
-def category(request,url):
+def post(request, url):
+    post = Post.objects.get(url=url)
+    cat = post.cat
+    related_posts = Post.objects.filter(cat=cat)[:10]
+    return render(request, 'posts.html', {'post': post, 'cat': cat, 'related_posts': related_posts})
+
+
+def category(request, url):
     cats = Category.objects.all()
     cat = Category.objects.get(url=url)
-    
+
     posts_list = Post.objects.filter(cat=cat)
     paginator = Paginator(posts_list, 2)
     page = request.GET.get('page')
@@ -43,19 +48,12 @@ def category(request,url):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
-    return render(request, "category.html", {'cat':cat, 'posts':posts, 'cats':cats})
+    return render(request, "category.html", {'cat': cat, 'posts': posts, 'cats': cats})
 
 
-
-
-class SearchResultsView(ListView):
-    model = Post
-    template_name = 'search_results.html'
-
-    def get_queryset(self): # new
-        query = self.request.GET.get('q')
-        object_list = Post.objects.filter(
-            Q(title__icontains=query) | Q(content__icontains=query)
-        )
-        return object_list
-        
+def SearchResultsView(request):
+    query = request.GET.get('q')
+    object_list = Post.objects.filter(
+        Q(title__icontains=query) | Q(content__icontains=query)
+    )
+    return render(request, 'search_results.html', {'object_list': object_list, 'query': query})

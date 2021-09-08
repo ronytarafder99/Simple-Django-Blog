@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.html import format_html
 from ckeditor.fields import RichTextField
+from django.utils import timezone
 
 # Create your models here.
 
@@ -25,6 +26,7 @@ class Post(models.Model):
     title=models.CharField(max_length=100)
     content=RichTextField()
     url=models.CharField(max_length=100)
+    created_date = models.DateTimeField(default=timezone.now)
     cat=models.ForeignKey(Category, on_delete=models.CASCADE)
     image=models.ImageField(upload_to='post/')
 

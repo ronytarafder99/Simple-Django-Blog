@@ -9,6 +9,6 @@ urlpatterns = [
     path('', home),
     path('home/',home),
     path('blog/<slug:url>',post),
-    path('search/', SearchResultsView.as_view(), name='search_results'),
+    path('search/', SearchResultsView, name='search_results'),
     path('category/<slug:url>',category)
 ]

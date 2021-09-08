@@ -1,18 +1,39 @@
 {%extends 'base.html'%}
 
-{%block title%} posts {%endblock%}
+{%block title%} {{post.title}} {%endblock%}
 
 {%block content%}
 
 <div class="container">
-    <div class="mt-4">
-            <img src="/media/{{post.image}}" alt="Post Imge Form Posts.html" class="img-thumbnail"><br>
-            <blockquote class="blockquote text-center my-4">
-                <p class="mb-0"><h1>{{post.title}}</h1></p>
-                <footer class="blockquote-footer">Posted in: <cite title="Source Title">{{post.cat.title}}</cite></footer>
-              </blockquote>
-            <p>{{post.content|safe}}</p>
+  <div class="row mt-4">
+    <div class="col-lg-8 col-12">
+      <img src="/media/{{post.image}}" alt="Post Imge Form Posts.html" class="img-thumbnail"><br>
+      <blockquote class="blockquote text-center my-4">
+        <p class="mb-0">
+          <h1>{{post.title}}</h1>
+        </p>
+        <footer class="blockquote-footer">Posted in: <cite title="Source Title">{{post.cat.title}}</cite></footer>
+      </blockquote>
+      <p>{{post.content|safe}}</p>
     </div>
+    <div class="col-lg-4 col-12">
+      <div class="alert bg-light" role="alert">
+        Related Post
+      </div>
+      <ul class="list-group">
+        {% for rel_post in related_posts %}
+        <a href="/blog/{{p.url}}" class="p-0 text-dark list-group-item d-flex justify-content-between align-items-center">
+          <p class="pl-2 mb-0">{{rel_post.title}}</p>
+          <div class="image-parent">
+            <img style="border-radius: .25rem; width: 120px;object-fit: cover; height: 80px;"
+              src="/media/{{rel_post.image}}"
+              class="m-1 img-fluid" alt="{{rel_post.title}}">
+          </div>
+        </a>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 </div>
 
 {%endblock%}

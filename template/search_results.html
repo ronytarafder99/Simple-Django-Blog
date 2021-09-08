@@ -1,8 +1,42 @@
-<h1>Search Results</h1>
-<ul>
-    {% for city in object_list %}
-      <li>
-        {{ city.title }}, {{ city.state }}
-      </li>
-    {% endfor %}
-  </ul>
+{%extends 'base.html'%}
+
+{%block title%} Serch Results {%endblock%}
+
+{%block content%}
+<div class="container">
+  <ol class="breadcrumb mt-3">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{query}}</li>
+  </ol>
+
+
+  {% if query %}
+  {% if object_list %}
+
+  {% for p in object_list %}
+  <div class="col-12 mb-4">
+    <div class="border row">
+      <div class="col-md-8 col-12 card-body d-flex flex-column align-items-start">
+        <a href="/category/{{p.cat.url}}"><strong class="d-inline-block mb-2 text-primary">{{p.cat}}</strong></a>
+        <h3 class="mb-0">
+          <a class="text-dark" href="/blog/{{p.url}}">{{p.title}}</a>
+        </h3>
+        <div class="mb-1 text-muted">{{p.created_date}}</div>
+        <p class="card-text mb-auto">{{p.content |truncatewords:10| safe}}</p>
+        <a href="/blog/{{p.url}}">Continue reading</a>
+      </div>
+      <img class="px-0 col-md-4 col-12" alt="" src="/media/{{p.image}}">
+    </div>
+  </div>
+
+  {% endfor %}
+  {% else %}
+  <p>Query returned no results.</p>
+  {% endif %}
+  {% endif %}
+
+
+</div>
+
+
+{%endblock%}
