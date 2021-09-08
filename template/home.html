@@ -1,0 +1,62 @@
+{%extends 'base.html'%}
+
+{%block title%} welcome title {%endblock%}
+
+{%block content%}
+<div class="container-fluid px-0">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {%for cat in cats%}
+            <li data-target="#carouselExampleCaptions" data-slide-to="0"
+                class="{% if forloop.first %} active{% endif %}"></li>
+            {%endfor%}
+        </ol>
+        <div class="carousel-inner">
+
+            {%for cat in cats%}
+            <div class="carousel-item {% if forloop.first %} active{% endif %}">
+                <img class="img-fluid slider_img" src="/media/{{cat.image}}" data-holder-rendered="true">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>{{cat.title}}</h5>
+                    <p>{{cat.description |truncatewords:5| safe}}</p>
+                    <a href="/category/{{cat.url}}"><button type="button" class="bg-light btn">Explore</button></a>
+                </div>
+            </div>
+            {%endfor%}
+
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row mb-2 mt-2">
+        <div class="col-12">
+            {% for p in posts%}
+            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                <div class="col-8 card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-primary">{{p.cat}}</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="/blog/{{p.url}}">{{p.title}}</a>
+                    </h3>
+                    <div class="mb-1 text-muted">Nov 12</div>
+                    <p class="card-text mb-auto">{{p.content |truncatewords:10| safe}}</p>
+                    <a href="/blog/{{p.url}}">Continue reading</a>
+                </div>
+                <img class="pr-0 col-4 rounded" alt="" src="/media/{{p.image}}">
+            </div>
+            {%endfor%}
+        </div>
+        {%include 'pagination.html' with page=posts %}
+    </div>
+</div>
+
+
+{%endblock%}

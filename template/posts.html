@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+
+{%block title%} posts {%endblock%}
+
+{%block content%}
+
+<div class="container">
+    <div class="mt-4">
+            <img src="/media/{{post.image}}" alt="Post Imge Form Posts.html" class="img-thumbnail"><br>
+            <blockquote class="blockquote text-center my-4">
+                <p class="mb-0"><h1>{{post.title}}</h1></p>
+                <footer class="blockquote-footer">Posted in: <cite title="Source Title">{{post.cat.title}}</cite></footer>
+              </blockquote>
+            <p>{{post.content|safe}}</p>
+    </div>
+</div>
+
+{%endblock%}

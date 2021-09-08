@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+
+{%block title%} welcome title {%endblock%}
+
+{%block content%}
+<div>
+  <h1 class="text-center" style="background-repeat: no-repeat; background-size: cover; padding: 150px 0; font-weight: bold; color: aliceblue; width: 100%; background-image: url(/media/{{cat.image}});">{{cat.title}}</h1>
+</div>
+<div class="container">
+  <div class="collection">
+    {%for p in posts%}
+    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+      <div class="col-8 card-body d-flex flex-column align-items-start">
+        <strong class="d-inline-block mb-2 text-primary">{{p.cat}}</strong>
+        <h3 class="mb-0">
+          <a class="text-dark" href="/blog/{{p.url}}">{{p.title}}</a>
+        </h3>
+        <div class="mb-1 text-muted">Nov 12</div>
+        <p class="card-text mb-auto">{{p.content |truncatewords:10| safe}}</p>
+        <a href="/blog/{{p.url}}">Continue reading</a>
+      </div>
+      <img class="pr-0 col-4 rounded" alt="" src="/media/{{p.image}}">
+    </div>
+    {%empty%}
+    <h5>No post in this Category</h5>
+    {%endfor%}
+  </div>
+  {%include 'pagination.html' with page=posts %}
+</div>
+
+{%endblock%}

@@ -1,0 +1,23 @@
+<div class="col-12 mb-4 mt-2 l-wrapper">
+    <div class="m-pagination">
+        <div class="pagination_inner d-flex align-items-center justify-content-center">
+            {% if page.has_previous%}
+            <a class="mr-2" href="?page={{page.previous_page_number}}">
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-chevron-left"></span> Previous
+                  </button>
+            </a>
+            {% endif %}
+
+            <div class="page_range">Page {{page.number}} Of {{page.paginator.num_pages}}</div>
+
+            {% if page.has_next%}
+            <a class="ml-2" href="?page={{page.next_page_number}}">
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-chevron-left"></span> Next
+                  </button>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
