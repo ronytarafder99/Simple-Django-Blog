@@ -31,7 +31,8 @@ def post(request, url):
     post = Post.objects.get(url=url)
     cat = post.cat
     related_posts = Post.objects.filter(cat=cat)[:10]
-    return render(request, 'posts.html', {'post': post, 'cat': cat, 'related_posts': related_posts})
+    cats = Category.objects.all()
+    return render(request, 'posts.html', {'post': post, 'cat': cat, 'cats': cats, 'related_posts': related_posts})
 
 
 def category(request, url):
