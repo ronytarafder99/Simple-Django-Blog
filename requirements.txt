@@ -43,7 +43,6 @@ filelock==3.0.12
 future==0.18.2
 geocoder==1.38.1
 geoip2==4.2.0
-gpg===1.13.1-unknown
 gunicorn==20.1.0
 httplib2==0.14.0
 idna==2.8
