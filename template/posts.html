@@ -22,7 +22,7 @@
       </div>
       <ul class="list-group">
         {% for rel_post in related_posts %}
-        <a href="/blog/{{p.url}}" class="p-0 text-dark list-group-item d-flex justify-content-between align-items-center">
+        <a href="/blog/{{rel_post.url}}" class="p-0 text-dark list-group-item d-flex justify-content-between align-items-center">
           <p class="pl-2 mb-0">{{rel_post.title}}</p>
           <div class="image-parent">
             <img style="border-radius: .25rem; width: 120px;object-fit: cover; height: 80px;"
