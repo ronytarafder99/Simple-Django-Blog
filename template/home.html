@@ -15,7 +15,7 @@
 
             {%for cat in cats%}
             <div class="carousel-item {% if forloop.first %} active{% endif %}">
-                <img class="img-fluid slider_img" src="/media/{{cat.image}}" data-holder-rendered="true">
+                <img class="img-fluid slider_img" src="/media/{{cat.image}}" data-holder-rendered="true" alt="{{cat.title}}">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>{{cat.title}}</h5>
                     <p>{{cat.description |truncatewords:5| safe}}</p>
@@ -51,7 +51,7 @@
                     <p class="card-text mb-auto">{{p.content |truncatewords:10| safe}}</p>
                     <a href="/blog/{{p.url}}">Continue reading</a>
                   </div>
-                  <img class="px-0 col-md-4 col-12" alt="" src="/media/{{p.image}}">
+                  <img class="px-0 col-md-4 col-12" alt="{{p.title}}" src="/media/{{p.image}}">
                 </div>
               </div>
             {%endfor%}
