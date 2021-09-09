@@ -23,7 +23,7 @@
       <ul class="col-12">
         {% for rel_post in related_posts %}
         <a href="/blog/{{rel_post.url}}" class="p-2 row p-0 text-dark list-group-item d-flex justify-content-between align-items-center">
-          <h5 class="px-0 py-2 col-12 col-md-7 mb-0">{{rel_post.title}}</h5>
+          <h6 class="pl-0 py-2 col-12 col-md-7 mb-0">{{rel_post.title}}</h6>
           <div class="col-12 col-md-5 px-0 image-parent">
             <img style="max-width: 100%; border-radius: .25rem; min-width: 120px;object-fit: cover; min-height: 80px;"
               src="/media/{{rel_post.image}}"
