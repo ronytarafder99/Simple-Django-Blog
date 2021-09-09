@@ -89,7 +89,6 @@ Pygments==2.10.0
 PyGObject==3.36.0
 PyJWT==2.1.0
 pylint==2.10.2
-libgirepository==1.0
 pylint-django==2.4.4
 pylint-plugin-utils==0.6
 pymacaroons==0.13.0
