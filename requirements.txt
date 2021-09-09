@@ -86,7 +86,6 @@ pycodestyle==2.7.0
 pycrypto==2.6.1
 pycups==1.9.73
 Pygments==2.10.0
-PyGObject==3.36.0
 PyJWT==2.1.0
 pylint==2.10.2
 pylint-django==2.4.4
