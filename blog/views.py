@@ -10,7 +10,7 @@ from django.db.models import Q
 def home(request):
     cats = Category.objects.all()
 
-    posts_list = Post.objects.all()
+    posts_list = Post.objects.all().order_by('-created_date')
     paginator = Paginator(posts_list, 2)
     page = request.GET.get('page')
 
