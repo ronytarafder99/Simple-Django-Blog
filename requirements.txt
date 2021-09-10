@@ -132,4 +132,4 @@ wrapt==1.12.1
 yarl==1.6.3
 zipp==1.0.0
 cloudinary==1.26.0
-
+dj3-cloudinary-storage==0.0.5
