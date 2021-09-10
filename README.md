@@ -1,6 +1,6 @@
 # Contact Me: [FaceBook](https://www.facebook.com/ronytarafder99/)
 
-*Simple But Some Advance Features in this project*
+*In this project I use <b>cloudinary</b> for handling my uploaded img. If you clone this project for learning purposes Make sure you delete <b>cloudinary</b> Section from settings.py in the main project folder OR Update <b>cloudinary</b> coordinations*
 
 **[Live Demo - 1](http://simple-djblog.herokuapp.com)**
 
