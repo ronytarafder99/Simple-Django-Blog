@@ -7,7 +7,7 @@
 <div class="container">
   <div class="row mt-4">
     <div class="col-lg-8 col-12">
-      <img src="/media/{{post.image}}" alt="{{post.title}}" class="img-thumbnail"><br>
+      <img src="{{post.image.url}}" alt="{{post.title}}" class="img-thumbnail"><br>
       <blockquote class="blockquote text-center my-4">
         <p class="mb-0">
           <h1>{{post.title}}</h1>
@@ -26,7 +26,7 @@
           <h6 class="pl-0 py-2 col-12 col-md-7 mb-0">{{rel_post.title}}</h6>
           <div class="col-12 col-md-5 px-0 image-parent">
             <img style="max-width: 100%; border-radius: .25rem; min-width: 120px;object-fit: cover; min-height: 80px;"
-              src="/media/{{rel_post.image}}"
+              src="{{rel_post.image.url}}"
               class="" alt="{{rel_post.title}}">
           </div>
         </a>

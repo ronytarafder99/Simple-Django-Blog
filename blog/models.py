@@ -14,9 +14,6 @@ class Category(models.Model):
     image=models.ImageField(upload_to='category/')
     add_date=models.DateTimeField(auto_now_add=True,null=True)
 
-    def image_tag(self):
-        return format_html('<img src="/media/{}" style="width:40px; heigth:40px;" /> '.format(self.image))
-
     def __str__(self):
         return self.title
 
@@ -29,9 +26,6 @@ class Post(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     cat=models.ForeignKey(Category, on_delete=models.CASCADE)
     image=models.ImageField(upload_to='post/')
-
-    def image_tag(self):
-        return format_html('<img src="/media/{}" style="width:40px; heigth:40px;" /> '.format(self.image))
 
     def __str__(self):
         return self.title
