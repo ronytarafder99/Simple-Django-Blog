@@ -15,7 +15,7 @@
 
             {%for cat in cats%}
             <div class="carousel-item {% if forloop.first %} active{% endif %}">
-                <img class="img-fluid slider_img" src="{{cat.image.url}}" data-holder-rendered="true" alt="{{cat.title}}">
+                <img style="filter: brightness(0.7);" class="img-fluid slider_img" src="{{cat.image.url}}" data-holder-rendered="true" alt="{{cat.title}}">
                 <div class="carousel-caption">
                     <h5>{{cat.title}}</h5>
                     <p>{{cat.description |truncatewords:5| safe}}</p>
